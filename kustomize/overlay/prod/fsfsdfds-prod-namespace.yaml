@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: fsfsdfds-prod
+  labels:
+    environment-id: env_9ea8a27e-80eb-417f-aa8d-9fbffdc2e950
+    project-id: project_3892d3ce-3c14-41bd-8190-e1fda7c25e6e
+    project-name: fsfsdfds
+    environment-name: prod
+    organization-id: org_99bfadb5-996a-47d5-a5fc-442c14a28627
