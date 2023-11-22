@@ -1,0 +1,23 @@
+name: staging-workflow (Skyu Generated)
+'on':
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+env:
+  ENCODED_PIPELINE_SECRET: >-
+    ${{secrets.TITAN3_ENV_2431C235D0474516A8D9A789880482D7_APP_0518247D29994BD9BD4108D988C89D4B_STAGINGCICD}}
+jobs:
+  build:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start
+        run: echo " Starting GitHub Action!"
+      - name: 'Run :: Checkout repository'
+        uses: actions/checkout@v2
+      - name: 'Run :: Decoding Secrets'
+        run: >-
+          echo "${{ env.ENCODED_PIPELINE_SECRET }}" | base64 --decode | jq -r
+          'to_entries[] | "\(.key)=\(.value)"' | while read line; do echo
+          "$line" >> $GITHUB_ENV; echo "::add-mask::${line#*=}"; done
